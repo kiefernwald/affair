@@ -19,12 +19,13 @@ interface AffairInterface
      * Returns events between a given (inclusive) start and end date.
      *
      * @param Carbon|null $start Moment of start (defaults to now if not given)
-     * @param Carbon|null $end Moment of end
+     * @param Carbon|null $end Moment of end (defaults to +3 months if not given)
+     * @param EventPlace|null $place Place to filter by
      * @param int|null $maxResults Max number of results to be returned
      *
      * @return array<Event> List of events (empty if none was found)
      */
-    public function getEvents(?Carbon $start = null, ?Carbon $end = null, ?int $maxResults = self::MAX_EVENTS): array;
+    public function getEvents(?Carbon $start = null, ?Carbon $end = null, ?EventPlace $place = null, ?int $maxResults = self::MAX_EVENTS): array;
 
     /**
      * Returns a single event by given ID.

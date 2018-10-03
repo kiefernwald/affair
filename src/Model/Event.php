@@ -2,7 +2,6 @@
 
 namespace Kiefernwald\Affair\Model;
 
-
 use Carbon\Carbon;
 
 /**

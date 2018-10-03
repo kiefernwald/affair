@@ -1,6 +1,7 @@
 <?php
 
 namespace Kiefernwald\Affair\Services;
+
 use Carbon\Carbon;
 use Kiefernwald\Affair\Model\Event;
 use Kiefernwald\Affair\Model\EventPlace;
@@ -32,14 +33,22 @@ class Affair implements AffairInterface
      * Returns events between a given (inclusive) start and end date.
      *
      * @param Carbon|null $start Moment of start (defaults to now if not given)
-     * @param Carbon|null $end Moment of end
+     * @param Carbon|null $end Moment of end (defaults to +3 months if not given)
+     * @param EventPlace|null $place Place to filter by
      * @param int|null $maxResults Max number of results to be returned
      *
-     * @return array<Event>|null List of events
+     * @return array<Event> List of events (empty if none was found)
      */
-    public function getEvents(?Carbon $start = null, ?Carbon $end = null, ?int $maxResults = self::MAX_EVENTS): ?array
+    public function getEvents(?Carbon $start = null, ?Carbon $end = null, ?EventPlace $place = null, ?int $maxResults = self::MAX_EVENTS): array
     {
-        return [];
+        if (empty($start)) {
+            $start = Carbon::now();
+        }
+        if (empty($end)) {
+            $end = Carbon::now()->addMonths(3);
+        }
+
+        return $this->eventProvider->provideMany($start, $end, $place, $maxResults);
     }
 
     /**
@@ -50,7 +59,7 @@ class Affair implements AffairInterface
      */
     public function getEvent(string $id): ?Event
     {
-        return null;
+        return $this->eventProvider->provideSingle($id);
     }
 
     /**
@@ -71,6 +80,15 @@ class Affair implements AffairInterface
         ?Carbon $end = null
     ): Event
     {
-        return new Event();
+        $event = new Event();
+        $event->setTitle($title);
+        $event->setText($text);
+        $event->setStart($start);
+        $event->setEnd($end);
+        $event->setPlace($place);
+
+        $this->eventProvider->storeEvent($event);
+
+        return $event;
     }
 }
