@@ -13,9 +13,17 @@ use Kiefernwald\Affair\Model\EventPlace;
  */
 interface EventProviderInterface
 {
-    public function provideSingle(string $eventId);
+    /**
+     * Returns a single event by id
+     *
+     * @param string $eventId Event id
+     * @return Event
+     */
+    public function provideSingle(string $eventId): Event;
 
     /**
+     * Returns many events.
+     *
      * @param Carbon $start Start date
      * @param Carbon $end End date
      * @param EventPlace|null $place Place to filter by
@@ -29,5 +37,11 @@ interface EventProviderInterface
         int $maxResults = AffairInterface::MAX_EVENTS
     ): array;
 
+    /**
+     * Stores an event.
+     *
+     * @param Event $event Event to store
+     * @return void
+     */
     public function storeEvent(Event $event);
 }
