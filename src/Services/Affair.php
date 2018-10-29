@@ -100,7 +100,7 @@ class Affair implements AffairInterface
      */
     public function eventIsSingleDay(Event $event): bool
     {
-        // TODO: Implement eventIsSingleDay() method.
+        return $event->getStart()->diffInDays($event->getEnd()) === 0;
     }
 
     /**
@@ -111,17 +111,21 @@ class Affair implements AffairInterface
      */
     public function eventHasStartTime(Event $event): bool
     {
-        // TODO: Implement eventHasStartTime() method.
+        return ($event->getStart()->hour !== 0)
+            || ($event->getStart()->minute !== 0)
+            || ($event->getStart()->second !== 0);
     }
 
     /**
      * Checks if the given event has a relevant end time
      *
      * @param Event $event Event
-     * @return bool true if event end time is different from 00:00
+     * @return bool true if event start time and end time are different
      */
     public function eventHasEndTime(Event $event): bool
     {
-        // TODO: Implement eventHasEndTime() method.
+        return ($event->getStart()->hour !== $event->getEnd()->hour)
+            || ($event->getStart()->minute !== $event->getEnd()->minute)
+            || ($event->getStart()->second !== $event->getEnd()->second);
     }
 }
