@@ -26,14 +26,14 @@ interface EventProviderInterface
      *
      * @param Carbon $start Start date
      * @param Carbon $end End date
-     * @param EventRegion|null $place Place to filter by
+     * @param EventRegion|null $region Region to filter by
      * @param int $maxResults Max number of results
      * @return array
      */
     public function provideMany(
         Carbon $start,
         Carbon $end,
-        ?EventRegion $place = null,
+        ?EventRegion $region = null,
         int $maxResults = AffairInterface::MAX_EVENTS
     ): array;
 
