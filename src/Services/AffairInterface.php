@@ -52,4 +52,28 @@ interface AffairInterface
         Carbon $start,
         ?Carbon $end = null
     ): Event;
+
+    /**
+     * Checks if the given event spans over a single day
+     *
+     * @param Event $event Event
+     * @return bool true if event starts and ends on the same day
+     */
+    public function eventIsSingleDay(Event $event): bool;
+
+    /**
+     * Checks if the given event has a relevant start time
+     *
+     * @param Event $event Event
+     * @return bool true if event start time is different from 00:00
+     */
+    public function eventHasStartTime(Event $event): bool;
+
+    /**
+     * Checks if the given event has a relevant end time
+     *
+     * @param Event $event Event
+     * @return bool true if event start time and end time are different
+     */
+    public function eventHasEndTime(Event $event): bool;
 }
