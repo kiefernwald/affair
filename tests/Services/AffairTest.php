@@ -98,6 +98,33 @@ class AffairTest extends TestCase
         );
     }
 
+    /**
+     * @dataProvider helperFunctionsDataProvider
+     */
+    public function testHelperFunctions(
+        $startTime,
+        $endTime,
+        $expectedIsSingleDay,
+        $expectedHasStartTime,
+        $expectedHasEndTime
+    ) {
+        $testEvent = new Event();
+        $testEvent->setTitle('Test title');
+        $testEvent->setText('Test text');
+        $testEvent->setPlace(new EventPlace());
+        $testEvent->setStart($startTime);
+        $testEvent->setEnd($endTime);
+
+        $this->assertEquals($expectedIsSingleDay, $this->affair->eventIsSingleDay($testEvent));
+        $this->assertEquals($expectedHasStartTime, $this->affair->eventHasStartTime($testEvent));
+        $this->assertEquals($expectedHasEndTime, $this->affair->eventHasEndTime($testEvent));
+    }
+
+    /**
+     * Data provider for test of getEvents()
+     *
+     * @return array Test data
+     */
     public function getEventsDataProvider()
     {
         Carbon::setTestNow(Carbon::create(2018, 04, 28, 5, 12, 0));
@@ -128,6 +155,53 @@ class AffairTest extends TestCase
                 null,
                 null,
                 AffairInterface::MAX_EVENTS
+            ],
+        ];
+    }
+
+    /**
+     * Data provider for helper functions
+     *
+     * @return array Test data
+     */
+    public function helperFunctionsDataProvider()
+    {
+        Carbon::setTestNow(Carbon::create(2018, 04, 28, 5, 12, 0));
+        return [
+            [
+                Carbon::create(2018, 04, 29, 9, 0, 0),
+                Carbon::create(2018, 04, 29, 15, 30, 0),
+                true,
+                true,
+                true,
+            ],
+            [
+                Carbon::create(2018, 04, 30, 9, 0, 0),
+                Carbon::create(2018, 04, 30, 9, 0, 0),
+                true,
+                true,
+                false,
+            ],
+            [
+                Carbon::create(2018, 04, 29, 0, 0, 0),
+                Carbon::create(2018, 04, 29, 0, 0, 0),
+                true,
+                false,
+                false,
+            ],
+            [
+                Carbon::create(2018, 04, 29, 9, 0, 0),
+                Carbon::create(2018, 04, 30, 15, 30, 0),
+                false,
+                true,
+                true,
+            ],
+            [
+                Carbon::create(2018, 04, 29, 0, 0, 0),
+                Carbon::create(2018, 04, 30, 0, 0, 0),
+                false,
+                false,
+                false,
             ],
         ];
     }

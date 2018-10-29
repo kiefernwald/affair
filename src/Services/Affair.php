@@ -91,4 +91,37 @@ class Affair implements AffairInterface
 
         return $event;
     }
+
+    /**
+     * Checks if the given event spans over a single day
+     *
+     * @param Event $event Event
+     * @return bool true if event starts and ends on the same day
+     */
+    public function eventIsSingleDay(Event $event): bool
+    {
+        // TODO: Implement eventIsSingleDay() method.
+    }
+
+    /**
+     * Checks if the given event has a relevant start time
+     *
+     * @param Event $event Event
+     * @return bool true if event start time is different from 00:00
+     */
+    public function eventHasStartTime(Event $event): bool
+    {
+        // TODO: Implement eventHasStartTime() method.
+    }
+
+    /**
+     * Checks if the given event has a relevant end time
+     *
+     * @param Event $event Event
+     * @return bool true if event end time is different from 00:00
+     */
+    public function eventHasEndTime(Event $event): bool
+    {
+        // TODO: Implement eventHasEndTime() method.
+    }
 }
