@@ -27,9 +27,14 @@ class Event
     protected $text;
 
     /**
-     * @var EventPlace $place Place this event happens at
+     * @var string $place Place this event happens at
      */
     protected $place;
+
+    /**
+     * @var EventRegion $region Region this event happens at
+     */
+    protected $region;
 
     /**
      * @var Carbon $start Moment of start
@@ -90,19 +95,35 @@ class Event
     }
 
     /**
-     * @return EventPlace
+     * @return string
      */
-    public function getPlace(): EventPlace
+    public function getPlace(): string
     {
         return $this->place;
     }
 
     /**
-     * @param EventPlace $place
+     * @param string $place
      */
-    public function setPlace(EventPlace $place): void
+    public function setPlace(string $place): void
     {
         $this->place = $place;
+    }
+
+    /**
+     * @return EventRegion
+     */
+    public function getRegion(): EventRegion
+    {
+        return $this->region;
+    }
+
+    /**
+     * @param EventRegion $region
+     */
+    public function setRegion(EventRegion $region): void
+    {
+        $this->region = $region;
     }
 
     /**

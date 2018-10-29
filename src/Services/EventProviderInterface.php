@@ -4,7 +4,7 @@ namespace Kiefernwald\Affair\Services;
 
 use Carbon\Carbon;
 use Kiefernwald\Affair\Model\Event;
-use Kiefernwald\Affair\Model\EventPlace;
+use Kiefernwald\Affair\Model\EventRegion;
 
 /**
  * Interface describing a data provider
@@ -26,14 +26,14 @@ interface EventProviderInterface
      *
      * @param Carbon $start Start date
      * @param Carbon $end End date
-     * @param EventPlace|null $place Place to filter by
+     * @param EventRegion|null $region Region to filter by
      * @param int $maxResults Max number of results
      * @return array
      */
     public function provideMany(
         Carbon $start,
         Carbon $end,
-        ?EventPlace $place = null,
+        ?EventRegion $region = null,
         int $maxResults = AffairInterface::MAX_EVENTS
     ): array;
 

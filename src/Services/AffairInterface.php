@@ -4,7 +4,7 @@ namespace Kiefernwald\Affair\Services;
 
 use Carbon\Carbon;
 use Kiefernwald\Affair\Model\Event;
-use Kiefernwald\Affair\Model\EventPlace;
+use Kiefernwald\Affair\Model\EventRegion;
 
 /**
  * Main service interface
@@ -20,12 +20,12 @@ interface AffairInterface
      *
      * @param Carbon|null $start Moment of start (defaults to now if not given)
      * @param Carbon|null $end Moment of end (defaults to +3 months if not given)
-     * @param EventPlace|null $place Place to filter by
+     * @param EventRegion|null $region Place to filter by
      * @param int|null $maxResults Max number of results to be returned
      *
      * @return array<Event> List of events (empty if none was found)
      */
-    public function getEvents(?Carbon $start = null, ?Carbon $end = null, ?EventPlace $place = null, ?int $maxResults = self::MAX_EVENTS): array;
+    public function getEvents(?Carbon $start = null, ?Carbon $end = null, ?EventRegion $region = null, ?int $maxResults = self::MAX_EVENTS): array;
 
     /**
      * Returns a single event by given ID.
@@ -40,7 +40,8 @@ interface AffairInterface
      *
      * @param string $title Event title
      * @param string $text Event description
-     * @param EventPlace $place Place of event
+     * @param string $place Place of event
+     * @param EventRegion $region Region of event
      * @param Carbon $start Start date (time is optional)
      * @param Carbon|null $end End date (time is optional)
      * @return Event Created event
@@ -48,7 +49,8 @@ interface AffairInterface
     public function createEvent(
         string $title,
         string $text,
-        EventPlace $place,
+        string $place,
+        EventRegion $region,
         Carbon $start,
         ?Carbon $end = null
     ): Event;

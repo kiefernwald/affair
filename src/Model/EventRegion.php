@@ -7,7 +7,7 @@ namespace Kiefernwald\Affair\Model;
  *
  * @package Kiefernwald\Affair\Model
  */
-class EventPlace
+class EventRegion
 {
     /**
      * @var string $title Title of place.

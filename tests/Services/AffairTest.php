@@ -4,7 +4,7 @@ namespace Kiefernwald\Affair\Tests\Services;
 
 use Carbon\Carbon;
 use Kiefernwald\Affair\Model\Event;
-use Kiefernwald\Affair\Model\EventPlace;
+use Kiefernwald\Affair\Model\EventRegion;
 use Kiefernwald\Affair\Services\Affair;
 use Kiefernwald\Affair\Services\AffairInterface;
 use Kiefernwald\Affair\Services\EventProviderInterface;
@@ -76,7 +76,8 @@ class AffairTest extends TestCase
         $testEvent = new Event();
         $testEvent->setTitle('Test title');
         $testEvent->setText('Test text');
-        $testEvent->setPlace(new EventPlace());
+        $testEvent->setPlace('Test place');
+        $testEvent->setRegion(new EventRegion());
         $testEvent->setStart(Carbon::now());
         $testEvent->setEnd(Carbon::now()->addDay());
 
@@ -92,6 +93,7 @@ class AffairTest extends TestCase
                 $testEvent->getTitle(),
                 $testEvent->getText(),
                 $testEvent->getPlace(),
+                $testEvent->getRegion(),
                 $testEvent->getStart(),
                 $testEvent->getEnd()
             )
@@ -111,7 +113,8 @@ class AffairTest extends TestCase
         $testEvent = new Event();
         $testEvent->setTitle('Test title');
         $testEvent->setText('Test text');
-        $testEvent->setPlace(new EventPlace());
+        $testEvent->setPlace('Test place');
+        $testEvent->setRegion(new EventRegion());
         $testEvent->setStart($startTime);
         $testEvent->setEnd($endTime);
 
