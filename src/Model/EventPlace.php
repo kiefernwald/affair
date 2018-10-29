@@ -15,6 +15,27 @@ class EventPlace
     protected $title;
 
     /**
+     * @var string $id Id of place
+     */
+    protected $id;
+
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string $id
+     */
+    public function setId(string $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
      * @return string
      */
     public function getTitle(): string
