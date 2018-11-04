@@ -73,6 +73,8 @@ class AffairTest extends TestCase
 
     public function testCreateEvent()
     {
+        Carbon::setTestNow(Carbon::create(2018, 04, 28, 5, 12, 0));
+
         $testEvent = new Event();
         $testEvent->setTitle('Test title');
         $testEvent->setText('Test text');
@@ -80,6 +82,8 @@ class AffairTest extends TestCase
         $testEvent->setRegion(new EventRegion());
         $testEvent->setStart(Carbon::now());
         $testEvent->setEnd(Carbon::now()->addDay());
+        $testEvent->setCreatedAt(Carbon::now());
+        $testEvent->setUpdatedAt(Carbon::now());
 
         $this->eventProvider
             ->expects($this->once())

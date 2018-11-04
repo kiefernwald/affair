@@ -47,6 +47,16 @@ class Event
     protected $end;
 
     /**
+     * @var Carbon $createdAt Moment of event creation
+     */
+    protected $createdAt;
+
+    /**
+     * @var Carbon $updatedAt Moment of last event change
+     */
+    protected $updatedAt;
+
+    /**
      * @return string
      */
     public function getId(): string
@@ -156,5 +166,37 @@ class Event
     public function setEnd(Carbon $end): void
     {
         $this->end = $end;
+    }
+
+    /**
+     * @return Carbon
+     */
+    public function getCreatedAt(): Carbon
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param Carbon $createdAt
+     */
+    public function setCreatedAt(Carbon $createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return Carbon
+     */
+    public function getUpdatedAt(): Carbon
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param Carbon $updatedAt
+     */
+    public function setUpdatedAt(Carbon $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
     }
 }
