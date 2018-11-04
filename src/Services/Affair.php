@@ -71,6 +71,8 @@ class Affair implements AffairInterface
      * @param EventRegion $region Region of event
      * @param Carbon $start Start date (time is optional)
      * @param Carbon|null $end End date (time is optional)
+     * @param Carbon|null $createdAt Creation of event (set to now if not given)
+     * @param Carbon|null $updatedAt Creation of event (set to now if not given)
      * @return Event Created event
      */
     public function createEvent(
@@ -79,7 +81,9 @@ class Affair implements AffairInterface
         string $place,
         EventRegion $region,
         Carbon $start,
-        ?Carbon $end = null
+        ?Carbon $end = null,
+        ?Carbon $createdAt = null,
+        ?Carbon $updatedAt = null
     ): Event
     {
         $event = new Event();
@@ -89,6 +93,8 @@ class Affair implements AffairInterface
         $event->setEnd($end);
         $event->setPlace($place);
         $event->setRegion($region);
+        $event->setCreatedAt($createdAt ?: Carbon::now());
+        $event->setUpdatedAt($updatedAt ?: Carbon::now());
 
         $this->eventProvider->storeEvent($event);
 
