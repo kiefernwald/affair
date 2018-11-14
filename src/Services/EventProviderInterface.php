@@ -17,6 +17,7 @@ interface EventProviderInterface
      * Returns a single event by id
      *
      * @param string $eventId Event id
+     *
      * @return Event
      */
     public function provideSingle(string $eventId): Event;
@@ -24,10 +25,11 @@ interface EventProviderInterface
     /**
      * Returns many events.
      *
-     * @param Carbon $start Start date
-     * @param Carbon $end End date
-     * @param EventRegion|null $region Region to filter by
-     * @param int $maxResults Max number of results
+     * @param Carbon           $start      Start date
+     * @param Carbon           $end        End date
+     * @param EventRegion|null $region     Region to filter by
+     * @param int              $maxResults Max number of results
+     *
      * @return array
      */
     public function provideMany(
@@ -41,6 +43,7 @@ interface EventProviderInterface
      * Stores an event.
      *
      * @param Event $event Event to store
+     *
      * @return void
      */
     public function storeEvent(Event $event);

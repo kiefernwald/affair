@@ -12,52 +12,72 @@ use Carbon\Carbon;
 class Event
 {
     /**
-     * @var string $id Event id
+     * Event id
+     *
+     * @var string $id
      */
     protected $id;
 
     /**
-     * @var string $title Event title
+     * Event title
+     *
+     * @var string $title
      */
     protected $title;
 
     /**
-     * @var string $text Event description
+     * Event description
+     *
+     * @var string $text
      */
     protected $text;
 
     /**
-     * @var string $place Place this event happens at
+     * Place this event happens at
+     *
+     * @var string $place
      */
     protected $place;
 
     /**
-     * @var EventRegion $region Region this event happens at
+     * Region this event happens at
+     *
+     * @var EventRegion $region
      */
     protected $region;
 
     /**
-     * @var Carbon $start Moment of start
+     * Moment of start
+     *
+     * @var Carbon $start
      */
     protected $start;
 
     /**
-     * @var Carbon $end Moment of end
+     * Moment of end
+     *
+     * @var Carbon $end
      */
     protected $end;
 
     /**
-     * @var Carbon $createdAt Moment of event creation
+     * Moment of event creation
+     *
+     * @var Carbon $createdAt
      */
     protected $createdAt;
 
     /**
-     * @var Carbon $updatedAt Moment of last event change
+     * Moment of last event change
+     *
+     * @var Carbon $updatedAt
      */
     protected $updatedAt;
 
     /**
-     * @return string
+     * Getter for id
+     *
+     * @return string Current id
      */
     public function getId(): string
     {
@@ -65,7 +85,11 @@ class Event
     }
 
     /**
-     * @param string $id
+     * Setter for id
+     *
+     * @param string $id New id
+     *
+     * @return void
      */
     public function setId(string $id): void
     {
@@ -73,7 +97,9 @@ class Event
     }
 
     /**
-     * @return string
+     * Getter for title
+     *
+     * @return string Current title
      */
     public function getTitle(): string
     {
@@ -81,7 +107,11 @@ class Event
     }
 
     /**
-     * @param string $title
+     * Setter for title
+     *
+     * @param string $title New title
+     *
+     * @return void
      */
     public function setTitle(string $title): void
     {
@@ -89,7 +119,9 @@ class Event
     }
 
     /**
-     * @return string
+     * Getter for text
+     *
+     * @return string Current text
      */
     public function getText(): string
     {
@@ -97,7 +129,11 @@ class Event
     }
 
     /**
-     * @param string $text
+     * Setter for text
+     *
+     * @param string $text New text
+     *
+     * @return void
      */
     public function setText(string $text): void
     {
@@ -105,7 +141,9 @@ class Event
     }
 
     /**
-     * @return string
+     * Getter for place
+     *
+     * @return string Current place
      */
     public function getPlace(): string
     {
@@ -113,7 +151,11 @@ class Event
     }
 
     /**
-     * @param string $place
+     * Setter for place
+     *
+     * @param string $place New place
+     *
+     * @return void
      */
     public function setPlace(string $place): void
     {
@@ -121,7 +163,9 @@ class Event
     }
 
     /**
-     * @return EventRegion
+     * Getter for region
+     *
+     * @return EventRegion Current region
      */
     public function getRegion(): EventRegion
     {
@@ -129,7 +173,11 @@ class Event
     }
 
     /**
-     * @param EventRegion $region
+     * Setter for region
+     *
+     * @param EventRegion $region New region
+     *
+     * @return void
      */
     public function setRegion(EventRegion $region): void
     {
@@ -137,7 +185,9 @@ class Event
     }
 
     /**
-     * @return Carbon
+     * Getter for start
+     *
+     * @return Carbon Current start
      */
     public function getStart(): Carbon
     {
@@ -145,7 +195,11 @@ class Event
     }
 
     /**
-     * @param Carbon $start
+     * Setter for start
+     *
+     * @param Carbon $start New start
+     *
+     * @return void
      */
     public function setStart(Carbon $start): void
     {
@@ -153,7 +207,9 @@ class Event
     }
 
     /**
-     * @return Carbon
+     * Getter for end
+     *
+     * @return Carbon Current end
      */
     public function getEnd(): Carbon
     {
@@ -161,7 +217,11 @@ class Event
     }
 
     /**
-     * @param Carbon $end
+     * Setter for end
+     *
+     * @param Carbon $end New end
+     *
+     * @return void
      */
     public function setEnd(Carbon $end): void
     {
@@ -169,7 +229,9 @@ class Event
     }
 
     /**
-     * @return Carbon
+     * Getter for createdAt
+     *
+     * @return Carbon Current createdAt
      */
     public function getCreatedAt(): Carbon
     {
@@ -177,7 +239,11 @@ class Event
     }
 
     /**
-     * @param Carbon $createdAt
+     * Setter for createdAt
+     *
+     * @param Carbon $createdAt New createdAt
+     *
+     * @return void
      */
     public function setCreatedAt(Carbon $createdAt): void
     {
@@ -185,7 +251,9 @@ class Event
     }
 
     /**
-     * @return Carbon
+     * Getter for updatedAt
+     *
+     * @return Carbon Current updatedAt
      */
     public function getUpdatedAt(): Carbon
     {
@@ -193,7 +261,11 @@ class Event
     }
 
     /**
-     * @param Carbon $updatedAt
+     * Setter for updatedAt
+     *
+     * @param Carbon $updatedAt New updatedAt
+     *
+     * @return void
      */
     public function setUpdatedAt(Carbon $updatedAt): void
     {
