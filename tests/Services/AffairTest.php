@@ -111,8 +111,8 @@ class AffairTest extends TestCase
         $startTime,
         $endTime,
         $expectedIsSingleDay,
-        $expectedHasStartTime,
-        $expectedHasEndTime
+        $expectedHasRelevantTime,
+        $expectedHasEnd
     ) {
         $testEvent = new Event();
         $testEvent->setTitle('Test title');
@@ -122,9 +122,9 @@ class AffairTest extends TestCase
         $testEvent->setStart($startTime);
         $testEvent->setEnd($endTime);
 
-        $this->assertEquals($expectedIsSingleDay, $this->affair->eventIsSingleDay($testEvent));
-        $this->assertEquals($expectedHasStartTime, $this->affair->eventHasStartTime($testEvent));
-        $this->assertEquals($expectedHasEndTime, $this->affair->eventHasEndTime($testEvent));
+        $this->assertEquals($expectedIsSingleDay, $this->affair->eventIsSameDay($testEvent));
+        $this->assertEquals($expectedHasRelevantTime, $this->affair->eventHasRelevantTime($testEvent));
+        $this->assertEquals($expectedHasEnd, $this->affair->eventHasEnd($testEvent));
     }
 
     /**
@@ -186,7 +186,7 @@ class AffairTest extends TestCase
                 Carbon::create(2018, 04, 30, 9, 0, 0),
                 Carbon::create(2018, 04, 30, 9, 0, 0),
                 true,
-                true,
+                false,
                 false,
             ],
             [
@@ -195,6 +195,13 @@ class AffairTest extends TestCase
                 true,
                 false,
                 false,
+            ],
+            [
+                Carbon::create(2018, 04, 29, 0, 0, 0),
+                Carbon::create(2018, 04, 29, 0, 0, 1),
+                true,
+                true,
+                true,
             ],
             [
                 Carbon::create(2018, 04, 29, 9, 0, 0),
@@ -208,7 +215,7 @@ class AffairTest extends TestCase
                 Carbon::create(2018, 04, 30, 0, 0, 0),
                 false,
                 false,
-                false,
+                true,
             ],
         ];
     }
