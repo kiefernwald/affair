@@ -30,7 +30,8 @@ interface AffairInterface
     /**
      * Returns a single event by given ID.
      *
-     * @param  string $id Event id
+     * @param string $id Event id
+     *
      * @return Event|null Found event (null if none was found)
      */
     public function getEvent(string $id): ?Event;
@@ -38,12 +39,13 @@ interface AffairInterface
     /**
      * Creates and stores a new Event.
      *
-     * @param  string      $title  Event title
-     * @param  string      $text   Event description
-     * @param  string      $place  Place of event
-     * @param  EventRegion $region Region of event
-     * @param  Carbon      $start  Start date (time is optional)
-     * @param  Carbon|null $end    End date (time is optional)
+     * @param string      $title  Event title
+     * @param string      $text   Event description
+     * @param string      $place  Place of event
+     * @param EventRegion $region Region of event
+     * @param Carbon      $start  Start date (time is optional)
+     * @param Carbon|null $end    End date (time is optional)
+     *
      * @return Event Created event
      */
     public function createEvent(
@@ -58,7 +60,8 @@ interface AffairInterface
     /**
      * Checks if the given event spans over a single day
      *
-     * @param  Event $event Event
+     * @param Event $event Event
+     *
      * @return bool true if event starts and ends on the same day
      */
     public function eventIsSameDay(Event $event): bool;
@@ -66,7 +69,8 @@ interface AffairInterface
     /**
      * Checks if the given event has a relevant end time
      *
-     * @param  Event $event Event
+     * @param Event $event Event
+     *
      * @return bool true if event start time and end time are different
      */
     public function eventHasRelevantTime(Event $event): bool;
@@ -75,6 +79,7 @@ interface AffairInterface
      * Checks if the given event has a relevant end
      *
      * @param Event $event Event
+     *
      * @return bool true if event start and end are different
      */
     public function eventHasEnd(Event $event): bool;

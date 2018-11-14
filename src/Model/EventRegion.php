@@ -10,17 +10,23 @@ namespace Kiefernwald\Affair\Model;
 class EventRegion
 {
     /**
-     * @var string $title Title of place.
+     * Title of the place
+     *
+     * @var string $title
      */
     protected $title;
 
     /**
-     * @var string $id Id of place
+     * Id of place
+     *
+     * @var string $id
      */
     protected $id;
 
     /**
-     * @return string
+     * Getter for id
+     *
+     * @return string Current id
      */
     public function getId(): string
     {
@@ -28,7 +34,11 @@ class EventRegion
     }
 
     /**
-     * @param string $id
+     * Setter for id
+     *
+     * @param string $id New id
+     *
+     * @return void
      */
     public function setId(string $id): void
     {
@@ -36,7 +46,9 @@ class EventRegion
     }
 
     /**
-     * @return string
+     * Getter for title
+     *
+     * @return string Current title
      */
     public function getTitle(): string
     {
@@ -44,7 +56,11 @@ class EventRegion
     }
 
     /**
-     * @param string $title
+     * Setter for title
+     *
+     * @param string $title New title
+     *
+     * @return void
      */
     public function setTitle(string $title): void
     {
