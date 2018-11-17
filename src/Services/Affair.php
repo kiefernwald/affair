@@ -3,6 +3,9 @@
 namespace Kiefernwald\Affair\Services;
 
 use Carbon\Carbon;
+use Carbon\CarbonInterval;
+use DateInterval;
+use Exception;
 use Kiefernwald\Affair\Model\Event;
 use Kiefernwald\Affair\Model\EventRegion;
 
@@ -22,13 +25,27 @@ class Affair implements AffairInterface
     protected $eventProvider;
 
     /**
+     * Default interval for lists
+     *
+     * @var CarbonInterval|DateInterval|null
+     */
+    protected $defaultListInterval;
+
+    /**
      * Affair service constructor.
      *
-     * @param EventProviderInterface $eventProvider Event provider
+     * @param EventProviderInterface $eventProvider       Event provider
+     * @param CarbonInterval|null    $defaultListInterval Default interval for lists
+     *
+     * @throws Exception in case invalid date interval was given
      */
-    public function __construct(EventProviderInterface $eventProvider)
+    public function __construct(EventProviderInterface $eventProvider, ?CarbonInterval $defaultListInterval = null)
     {
         $this->eventProvider = $eventProvider;
+        if (empty($defaultListInterval)) {
+            $defaultListInterval = CarbonInterval::instance(new DateInterval('P3M'));
+        }
+        $this->defaultListInterval = $defaultListInterval;
     }
 
     /**
@@ -48,10 +65,14 @@ class Affair implements AffairInterface
         ?int $maxResults = self::MAX_EVENTS
     ): array {
         if (empty($start)) {
-            $start = Carbon::now();
+            if (empty($end)) {
+                $start = Carbon::now();
+            } else {
+                $start = $end->copy()->sub($this->defaultListInterval);
+            }
         }
         if (empty($end)) {
-            $end = Carbon::now()->addMonths(3);
+            $end = $start->copy()->add($this->defaultListInterval);
         }
 
         return $this->eventProvider->provideMany($start, $end, $region, $maxResults);
