@@ -146,7 +146,7 @@ class AffairTest extends TestCase
                 AffairInterface::MAX_EVENTS
             ],
             [
-                Carbon::now(),
+                Carbon::create(2018, 04, 29, 8, 19, 0)->subMonths(3),
                 Carbon::create(2018, 04, 29, 8, 19, 0),
                 AffairInterface::MAX_EVENTS,
                 null,
