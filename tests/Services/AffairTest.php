@@ -30,13 +30,13 @@ class AffairTest extends TestCase
 
     const EVENT_ID = 456;
 
-    protected function setUp()
+    protected function setUp():void
     {
         $this->eventProvider = $this->getMockBuilder(EventProviderInterface::class)->getMockForAbstractClass();
         $this->affair = new Affair($this->eventProvider);
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass():void
     {
         Carbon::setTestNow();
     }
